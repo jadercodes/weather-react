@@ -27,7 +27,7 @@ export default function Search() {
     setHumidity(response.data.main.humidity);
     setWind(response.data.wind.speed);
     setIcon(
-      `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+      `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
     );
   }
 
