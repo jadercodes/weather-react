@@ -5,9 +5,11 @@ import Contact from "./Contact";
 export default function App() {
   return (
     <div className="App">
-      <h1>Weather App</h1>
-      <Search />
-      <Contact />
+      <div className="container">
+        <h1>Weather App</h1>
+        <Search />
+        <Contact />
+      </div>
     </div>
   );
 }
