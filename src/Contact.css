@@ -1,5 +1,15 @@
 .Contact {
-  margin-top: 10px;
   font-style: italic;
-  font-size: small;
+  font-size: x-small;
+  padding: 10px 25px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.git {
+  color: #e0c0e0;
+}
+
+.git:hover {
+  color: #e0c0e0;
 }

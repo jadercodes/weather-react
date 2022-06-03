@@ -1,0 +1,49 @@
+.city-name {
+  text-transform: capitalize;
+}
+
+.current-img {
+  width: 144%;
+}
+
+.city {
+  text-align: right;
+}
+
+.current {
+  padding: 0 14px;
+  font-size: 22px;
+  line-height: 25px;
+}
+
+.description,
+.wind-speed {
+  font-size: small;
+  line-height: 15px;
+}
+
+.description:first-letter {
+  text-transform: capitalize;
+}
+
+.f-temp,
+.c-temp {
+  text-decoration: none;
+  color: #fff;
+}
+
+.f-temp:hover,
+.c-temp:hover {
+  color: rgba(53, 53, 54, 0.5);
+}
+
+.active {
+  color: #fff;
+  cursor: default;
+  text-decoration: none;
+}
+
+.active:hover {
+  color: #fff !important;
+  cursor: text;
+}

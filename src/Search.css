@@ -1,3 +1,15 @@
-#city-name {
-  text-transform: capitalize;
+.search-input {
+  font-size: large;
+  background-color: rgba(146, 144, 164, 0.7);
+  border: 1px solid rgba(53, 53, 54, 0.5);
+  border-radius: 4px;
+  width: 280px;
+  padding: 10px;
+  color: #fff;
+  position: relative;
+  margin: 10px 10px 0px 10px;
+}
+
+::placeholder {
+  color: #fff;
 }
