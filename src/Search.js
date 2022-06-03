@@ -23,13 +23,6 @@ export default function Search() {
           autoFocus
         />
       </form>
-      <CurrentForecast
-        description={description}
-        wind={wind}
-        temperature={temperature}
-        city={city}
-        icon={icon}
-      />
     </div>
   );
 
@@ -56,7 +49,18 @@ export default function Search() {
   }
 
   if (loaded) {
-    return form;
+    return (
+      <div>
+        {form}
+        <CurrentForecast
+          description={description}
+          wind={wind}
+          temperature={temperature}
+          city={city}
+          icon={icon}
+        />
+      </div>
+    );
   } else {
     return form;
   }
