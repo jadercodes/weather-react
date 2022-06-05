@@ -1,22 +1,16 @@
 import React from "react";
 import "./CurrentForecast.css";
 
-export default function CurrentForecast({
-  description,
-  wind,
-  temperature,
-  city,
-  icon,
-}) {
+export default function CurrentForecast({ data, city }) {
   return (
     <div className="box city">
       <div className="row">
         <div className="col-3">
-          <img className="current-img" alt="weather" src={icon} />
+          <img className="current-img" alt="weather" src={data.icon} />
         </div>
 
         <div className="col-9 current">
-          <span className="temp">{Math.round(temperature)}</span>
+          <span className="temp">{Math.round(data.temperature)}</span>
           <a href="/" className="c-temp active">
             {" "}
             °C
@@ -26,8 +20,8 @@ export default function CurrentForecast({
             {" "}
             °F
           </a>
-          <div className="description">{description}</div>
-          <div className="wind-speed">Wind: {wind} km/h</div>
+          <div className="description">{data.description}</div>
+          <div className="wind-speed">Wind: {data.wind} km/h</div>
           <span className="city-name">{city}</span>
         </div>
       </div>

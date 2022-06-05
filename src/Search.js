@@ -4,14 +4,11 @@ import "./Search.css";
 import CurrentForecast from "./CurrentForecast";
 
 export default function Search() {
-  let [city, setCity] = useState(null);
-  let [temperature, setTemperature] = useState(null);
-  let [description, setDescription] = useState(null);
-  let [wind, setWind] = useState(null);
-  let [icon, setIcon] = useState(null);
-  let [loaded, setLoaded] = useState(false);
+  const [city, setCity] = useState(null);
+  const [weatherData, setWeatherData] = useState(null);
+  const [loaded, setLoaded] = useState(false);
 
-  let form = (
+  const form = (
     <div className="Form">
       <form onSubmit={handleSubmit}>
         <input
@@ -28,12 +25,12 @@ export default function Search() {
 
   function showWeather(response) {
     setLoaded(true);
-    setTemperature(response.data.main.temp);
-    setDescription(response.data.weather[0].description);
-    setWind(response.data.wind.speed);
-    setIcon(
-      `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-    );
+    setWeatherData({
+      temperature: response.data.main.temp,
+      description: response.data.weather[0].description,
+      wind: response.data.wind.speed,
+      icon: `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
+    });
   }
 
   function handleSubmit(event) {
@@ -52,13 +49,7 @@ export default function Search() {
     return (
       <div>
         {form}
-        <CurrentForecast
-          description={description}
-          wind={wind}
-          temperature={temperature}
-          city={city}
-          icon={icon}
-        />
+        <CurrentForecast data={weatherData} city={city} />
       </div>
     );
   } else {
