@@ -2,11 +2,14 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./Search.css";
 import CurrentForecast from "./CurrentForecast";
+import CurrentDate from "./CurrentDate";
+import CurrentLoc from "./CurrentLoc";
 
 export default function Search() {
-  const [city, setCity] = useState(null);
+  const [city, setCity] = useState("Bangkok");
   const [weatherData, setWeatherData] = useState(null);
-  const [loaded, setLoaded] = useState(false);
+  const [called, setCalled] = useState(false);
+  const [error, setError] = useState("");
 
   const form = (
     <div className="Form">
@@ -18,41 +21,64 @@ export default function Search() {
           placeholder="Enter a city.."
           autoComplete="off"
           autoFocus
+          onChange={handleCityChange}
         />
       </form>
     </div>
   );
 
-  function showWeather(response) {
-    setLoaded(true);
+  function handleSuccess(response) {
+    // check if this is the first API call
+    // set to true as it has been called
+    if (!called) {
+      setCalled(true);
+    }
+    // clean up the error message
+    if (error) {
+      setError("");
+    }
     setWeatherData({
       temperature: response.data.main.temp,
       description: response.data.weather[0].description,
       wind: response.data.wind.speed,
       icon: `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
+      date: new Date(response.data.dt * 1000),
+      city: response.data.name,
     });
   }
 
   function handleSubmit(event) {
     event.preventDefault();
-    const submitCity = event.target.elements.city.value.toLowerCase();
-    setCity(submitCity);
-    let url = `https://api.openweathermap.org/data/2.5/weather?q=${submitCity}&appid=f33d05dcaa068a4dd766639aa37be9b8&units=metric`;
-    axios.get(url).then(showWeather).catch(handleError);
+    connect();
   }
 
-  function handleError() {
-    setLoaded(false);
+  function handleCityChange(event) {
+    setCity(event.target.value.toLowerCase());
   }
 
-  if (loaded) {
+  function connect() {
+    let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=f33d05dcaa068a4dd766639aa37be9b8&units=metric`;
+    axios
+      .get(url)
+      .then(handleSuccess)
+      .catch(() => setError(`"${city}" cannot be found`));
+  }
+
+  if (called) {
     return (
       <div>
         {form}
-        <CurrentForecast data={weatherData} city={city} />
+        <CurrentLoc />
+        {error ? (
+          <div className="box">{error}</div>
+        ) : (
+          <CurrentForecast data={weatherData} city={city} />
+        )}
+        <CurrentDate data={weatherData} />
       </div>
     );
   } else {
+    connect();
     return form;
   }
 }

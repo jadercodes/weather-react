@@ -22,7 +22,7 @@ export default function CurrentForecast({ data, city }) {
           </a>
           <div className="description">{data.description}</div>
           <div className="wind-speed">Wind: {data.wind} km/h</div>
-          <span className="city-name">{city}</span>
+          <span className="city-name">{data.city}</span>
         </div>
       </div>
     </div>
