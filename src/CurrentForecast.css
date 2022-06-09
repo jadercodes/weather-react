@@ -1,9 +1,12 @@
 .city-name {
   text-transform: capitalize;
+  word-wrap: break-word;
 }
 
-.current-img {
-  width: 144%;
+.current-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .city {

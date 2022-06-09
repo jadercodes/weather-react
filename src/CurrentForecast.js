@@ -1,12 +1,13 @@
 import React from "react";
 import "./CurrentForecast.css";
+import WeatherIcon from "./WeatherIcon";
 
 export default function CurrentForecast({ data, city }) {
   return (
     <div className="box city">
       <div className="row">
-        <div className="col-3">
-          <img className="current-img" alt="weather" src={data.icon} />
+        <div className="col-3 current-icon">
+          <WeatherIcon code={data.icon} />
         </div>
 
         <div className="col-9 current">
