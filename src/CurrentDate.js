@@ -1,7 +1,9 @@
 import React from "react";
 import "./CurrentDate.css";
 
-export default function CurrentDate({ data }) {
+export default function CurrentDate() {
+  let date = new Date();
+
   let days = [
     "Sunday",
     "Monday",
@@ -11,13 +13,13 @@ export default function CurrentDate({ data }) {
     "Friday",
     "Saturday",
   ];
-  let day = days[data.date.getDay()];
-  let hours = data.date.getHours();
+  let day = days[date.getDay()];
+  let hours = date.getHours();
   if (hours < 10) {
     hours = `0${hours}`;
   }
 
-  let minutes = data.date.getMinutes();
+  let minutes = date.getMinutes();
   if (minutes < 10) {
     minutes = `0${minutes}`;
   }

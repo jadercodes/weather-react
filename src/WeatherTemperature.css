@@ -1,6 +1,5 @@
 .f-temp,
-.c-temp,
-.break {
+.c-temp {
   text-decoration: none;
   color: rgba(53, 53, 54, 0.5);
 }

@@ -42,7 +42,6 @@ export default function Search() {
       description: response.data.weather[0].description,
       wind: response.data.wind.speed,
       icon: response.data.weather[0].icon,
-      date: new Date(response.data.dt * 1000),
       city: response.data.name,
     });
   }
@@ -74,7 +73,7 @@ export default function Search() {
         ) : (
           <CurrentForecast data={weatherData} />
         )}
-        <CurrentDate data={weatherData} />
+        <CurrentDate />
       </div>
     );
   } else {
