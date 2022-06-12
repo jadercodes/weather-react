@@ -72,7 +72,7 @@ export default function Search() {
         {error ? (
           <div className="box">{error}</div>
         ) : (
-          <CurrentForecast data={weatherData} city={city} />
+          <CurrentForecast data={weatherData} />
         )}
         <CurrentDate data={weatherData} />
       </div>

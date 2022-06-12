@@ -1,0 +1,22 @@
+.f-temp,
+.c-temp,
+.break {
+  text-decoration: none;
+  color: rgba(53, 53, 54, 0.5);
+}
+
+.f-temp:hover,
+.c-temp:hover {
+  color: rgba(53, 53, 54, 0.5);
+}
+
+.active {
+  color: #fff;
+  cursor: default;
+  text-decoration: none;
+}
+
+.active:hover {
+  color: #fff !important;
+  cursor: text;
+}

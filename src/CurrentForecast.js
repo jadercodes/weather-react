@@ -1,8 +1,9 @@
 import React from "react";
 import "./CurrentForecast.css";
 import WeatherIcon from "./WeatherIcon";
+import WeatherTemperature from "./WeatherTemperature";
 
-export default function CurrentForecast({ data, city }) {
+export default function CurrentForecast({ data }) {
   return (
     <div className="box city">
       <div className="row">
@@ -11,16 +12,7 @@ export default function CurrentForecast({ data, city }) {
         </div>
 
         <div className="col-9 current">
-          <span className="temp">{Math.round(data.temperature)}</span>
-          <a href="/" className="c-temp active">
-            {" "}
-            °C
-          </a>{" "}
-          <span> | </span>
-          <a href="/" className="f-temp">
-            {" "}
-            °F
-          </a>
+          <WeatherTemperature celsius={data.temperature} />
           <div className="description">{data.description}</div>
           <div className="wind-speed">Wind: {data.wind} km/h</div>
           <span className="city-name">{data.city}</span>
