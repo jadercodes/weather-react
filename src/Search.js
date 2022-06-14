@@ -4,6 +4,7 @@ import "./Search.css";
 import CurrentForecast from "./CurrentForecast";
 import CurrentDate from "./CurrentDate";
 import CurrentLoc from "./CurrentLoc";
+import WeeklyForecast from "./WeeklyForecast";
 
 export default function Search() {
   const [city, setCity] = useState("Bangkok");
@@ -43,6 +44,7 @@ export default function Search() {
       wind: response.data.wind.speed,
       icon: response.data.weather[0].icon,
       city: response.data.name,
+      coordinates: response.data.coord,
     });
   }
 
@@ -74,6 +76,7 @@ export default function Search() {
           <CurrentForecast data={weatherData} />
         )}
         <CurrentDate />
+        <WeeklyForecast coordinates={weatherData.coordinates} />
       </div>
     );
   } else {

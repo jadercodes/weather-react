@@ -1,7 +1,18 @@
+import axios from "axios";
 import React from "react";
 import "./WeeklyForecast.css";
 
-export default function WeeklyForecast() {
+export default function WeeklyForecast({ coordinates }) {
+  function handleResponse(response) {
+    console.log(response.data);
+  }
+
+  let longitude = coordinates.lon;
+  let latitude = coordinates.lat;
+  let url = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=f33d05dcaa068a4dd766639aa37be9b8&units=metric`;
+
+  axios.get(url).then(handleResponse);
+
   return (
     <div className="box week">
       <div className="row">
