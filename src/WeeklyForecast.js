@@ -16,41 +16,15 @@ export default function WeeklyForecast({ coordinates }) {
     return (
       <div className="box week">
         <div className="row">
-          <div className="col-4">
-            <WeeklyForecastDay data={forecast[1]} />
-          </div>
-          <div className="col-4">
-            Mon <div>29 °C</div>
-            <div>
-              <img className="forecast-img" alt="weather" src="" />
-            </div>
-          </div>
-          <div className="col-4">
-            Tue <div>26 °C</div>
-            <div>
-              <img className="forecast-img" alt="weather" src="" />
-            </div>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-4">
-            Wed <div>33 °C</div>
-            <div>
-              <img className="forecast-img" alt="weather" src="" />
-            </div>
-          </div>
-          <div className="col-4">
-            Thu <div>30 °C</div>
-            <div>
-              <img className="forecast-img" alt="weather" src="" />
-            </div>
-          </div>
-          <div className="col-4">
-            Fri <div>29 °C</div>
-            <div>
-              <img className="forecast-img" alt="weather" src="" />
-            </div>
-          </div>
+          {forecast.map(function (dailyForecast, index) {
+            if (index > 0 && index < 7) {
+              return (
+                <div className="col-4" key={index}>
+                  <WeeklyForecastDay data={dailyForecast} />
+                </div>
+              );
+            }
+          })}
         </div>
       </div>
     );
