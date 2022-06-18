@@ -1,11 +1,15 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./WeeklyForecast.css";
 import WeeklyForecastDay from "./WeeklyForecastDay";
 
 export default function WeeklyForecast({ coordinates }) {
   let [called, setCalled] = useState(false);
   let [forecast, setForecast] = useState(null);
+
+  useEffect(() => {
+    setCalled(false);
+  }, [coordinates]);
 
   function handleResponse(response) {
     setForecast(response.data.daily);

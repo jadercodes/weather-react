@@ -76,7 +76,12 @@ export default function Search() {
           <CurrentForecast data={weatherData} />
         )}
         <CurrentDate />
-        <WeeklyForecast coordinates={weatherData.coordinates} />
+
+        {error ? (
+          <div>{null}</div>
+        ) : (
+          <WeeklyForecast coordinates={weatherData.coordinates} />
+        )}
       </div>
     );
   } else {
