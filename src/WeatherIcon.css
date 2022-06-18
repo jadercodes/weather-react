@@ -1,3 +1,7 @@
-canvas {
+.current-icon canvas {
   width: 100%;
+}
+
+.weekly-forecast canvas {
+  width: 40%;
 }
