@@ -27,6 +27,8 @@ export default function WeeklyForecast({ coordinates }) {
                   <WeeklyForecastDay data={dailyForecast} />
                 </div>
               );
+            } else {
+              return null;
             }
           })}
         </div>
