@@ -23,6 +23,7 @@ export default function Search() {
           autoComplete="off"
           autoFocus
           onChange={handleCityChange}
+          value={city}
         />
       </form>
     </div>
@@ -46,6 +47,7 @@ export default function Search() {
       city: response.data.name,
       coordinates: response.data.coord,
     });
+    setCity(response.data.name);
   }
 
   function handleSubmit(event) {
@@ -69,7 +71,7 @@ export default function Search() {
     return (
       <div>
         {form}
-        <CurrentLoc />
+        <CurrentLoc onUpdate={handleSuccess} />
         {error ? (
           <div className="box">{error}</div>
         ) : (
